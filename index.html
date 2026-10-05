@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>منصة حمداد هشام التعليمية للوساطة القضائية</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary: #123c69;
+      --secondary: #1f7a8c;
+      --gold: #d4af37;
+      --light: #f4f7fb;
+      --white: #ffffff;
+      --dark: #17202a;
+      --gray: #667085;
+      --border: #e5e7eb;
+      --success: #198754;
+      --danger: #dc3545;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.8;
+      transition: .3s;
+    }
+
+    body.dark {
+      --light: #101820;
+      --white: #18232d;
+      --dark: #f5f7fa;
+      --gray: #b9c2cc;
+      --border: #33404d;
+      --shadow: 0 10px 30px rgba(0,0,0,.3);
+    }
+
+    /* HEADER */
+    header {
+      background:
+        linear-gradient(135deg, rgba(18,60,105,.97), rgba(31,122,140,.94));
+      color: white;
+      padding: 20px 7%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,.15);
+    }
+
+    .header-container {
+      max-width: 1300px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #123c69;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .brand h1 {
+      font-size: 20px;
+    }
+
+    .brand span {
+      display: block;
+      font-size: 12px;
+      opacity: .85;
+    }
+
+    nav {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    nav button,
+    .icon-btn {
+      border: none;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      padding: 9px 12px;
+      border-radius: 8px;
+      transition: .25s;
+      font-family: inherit;
+    }
+
+    nav button:hover,
+    .icon-btn:hover {
+      background: rgba(255,255,255,.15);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      padding: 70px 7%;
+      background:
+        linear-gradient(rgba(10,38,65,.86), rgba(10,38,65,.86)),
+        radial-gradient(circle at 20% 20%, #3c8dbc, #123c69 60%, #071b2d);
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 1300px;
+      margin: auto;
+      width: 100%;
+    }
+
+    .hero h2 {
+      font-size: clamp(32px, 5vw, 58px);
+      max-width: 850px;
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 800px;
+      font-size: 19px;
+      color: #e5eef7;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      cursor: pointer;
+      padding: 13px 23px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 15px;
+      transition: .25s;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #132b40;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--primary);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    /* GENERAL */
+    section {
+      padding: 70px 7%;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      color: var(--primary);
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    body.dark .section-title h2 {
+      color: #62b6cb;
+    }
+
+    .section-title p {
+      color: var(--gray);
+    }
+
+    /* CARDS */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-icon {
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: rgba(31,122,140,.12);
+      color: var(--secondary);
+      font-size: 25px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    body.dark .card h3 {
+      color: #70c6d9;
+    }
+
+    .card p {
+      color: var(--gray);
+    }
+
+    /* ABOUT */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-box {
+      background: var(--white);
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .about-list {
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    .about-list li {
+      margin: 12px 0;
+      color: var(--gray);
+    }
+
+    .about-list li::before {
+      content: "✓";
+      color: var(--success);
+      font-weight: bold;
+      margin-left: 8px;
+    }
+
+    /* SEARCH */
+    .search-box {
+      max-width: 750px;
+      margin: 0 auto 30px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--dark);
+      font-family: inherit;
+    }
+
+    /* CASES */
+    .case-card {
+      position: relative;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(31,122,140,.12);
+      color: var(--secondary);
+      padding: 4px 10px;
+      border-radius: 30px;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .case-card .actions {
+      margin-top: 20px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .favorite {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--dark);
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .favorite.active {
+      color: #c9184a;
+      border-color: #c9184a;
+    }
+
+    /* STEPS */
+    .steps {
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      padding: 25px 75px 25px 25px;
+      background: var(--white);
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      margin-bottom: 15px;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      right: 20px;
+      top: 25px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary);
+      color: white;
+      font-weight: bold;
+    }
+
+    /* QUIZ */
+    .quiz-container {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .question {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+
+    .answers label {
+      display: block;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .answers label:hover {
+      background: rgba(31,122,140,.08);
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      display: none;
+    }
+
+    /* MODAL */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 2000;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      width: min(800px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--white);
+      color: var(--dark);
+      border-radius: 18px;
+      padding: 30px;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      left: 18px;
+      top: 12px;
+      border: none;
+      background: transparent;
+      color: var(--dark);
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0a263f;
+      color: white;
+      padding: 45px 7%;
+      text-align: center;
+    }
+
+    footer p {
+      color: #c9d6e3;
+      margin: 8px;
+    }
+
+    /* TO TOP */
+    #topBtn {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      width: 45px;
+      height: 45px;
+      border: none;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #123c69;
+      cursor: pointer;
+      display: none;
+      z-index: 100;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .header-container {
+        flex-direction: column;
+      }
+
+      nav {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 50px 5%;
+      }
+
+      section {
+        padding: 50px 5%;
+      }
+
+      .brand h1 {
+        font-size: 16px;
+      }
+
+      nav button {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+  <div class="header-container">
+
+    <div class="brand">
+      <div class="logo">ح</div>
+
+      <div>
+        <h1>منصة حمداد هشام</h1>
+        <span>الوساطة القضائية</span>
+      </div>
+    </div>
+
+    <nav>
+      <button onclick="goTo('home')">الرئيسية</button>
+      <button onclick="goTo('definition')">الوساطة</button>
+      <button onclick="goTo('cases')">القضايا</button>
+      <button onclick="goTo('steps')">المراحل</button>
+      <button onclick="goTo('quiz')">اختبر نفسك</button>
+      <button onclick="goTo('dictionary')">المصطلحات</button>
+      <button onclick="toggleDarkMode()" class="icon-btn">🌙</button>
+    </nav>
+
+  </div>
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+  <div class="hero-content">
+
+    <h2>
+      منصة حمداد هشام التعليمية
+      للوساطة القضائية
+    </h2>
+
+    <p>
+      منصة تعليمية موجهة لطلبة الحقوق والباحثين والمهتمين
+      بالوساطة القضائية، تهدف إلى تبسيط المفاهيم القانونية
+      وعرض مراحل الوساطة ودراسة نماذج تطبيقية للقضايا.
+    </p>
+
+    <div class="buttons">
+
+      <button
+        class="btn btn-primary"
+        onclick="goTo('definition')">
+        ابدأ التعلم
+      </button>
+
+      <button
+        class="btn btn-secondary"
+        onclick="goTo('cases')">
+        استكشف القضايا
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>عن المنصة</h2>
+
+      <p>
+        بيئة تعليمية رقمية مخصصة لطلبة الحقوق
+      </p>
+
+    </div>
+
+
+    <div class="about">
+
+      <div class="about-box">
+
+        <h3>لماذا هذه المنصة؟</h3>
+
+        <p>
+          تم تصميم هذه المنصة لمساعدة طالب الحقوق على فهم
+          الوساطة القضائية بصورة عملية ومنظمة، والانتقال
+          من المعرفة النظرية إلى تحليل الحالات والنزاعات.
+        </p>
+
+        <ul class="about-list">
+
+          <li>شرح المفاهيم الأساسية للوساطة القضائية.</li>
+
+          <li>التعرف على مبادئ الوساطة.</li>
+
+          <li>دراسة مراحل إجراء الوساطة.</li>
+
+          <li>تحليل نماذج لقضايا افتراضية.</li>
+
+          <li>اختبار المعلومات القانونية.</li>
+
+          <li>الاستفادة من قاموس المصطلحات.</li>
+
+        </ul>
+
+      </div>
+
+
+      <div class="about-box">
+
+        <h3>الفئة المستهدفة</h3>
+
+        <p>
+          هذه المنصة موجهة أساسًا إلى:
+        </p>
+
+        <ul class="about-list">
+
+          <li>طلبة كليات الحقوق.</li>
+
+          <li>طلبة الماستر والدكتوراه.</li>
+
+          <li>الباحثين في القانون.</li>
+
+          <li>المهتمين بوسائل تسوية النزاعات.</li>
+
+          <li>المقبلين على دراسة الوساطة القضائية.</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= DEFINITION ================= -->
+
+<section id="definition">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>ما هي الوساطة القضائية؟</h2>
+
+      <p>مدخل أساسي لفهم نظام الوساطة وتسوية النزاعات</p>
+
+    </div>
+
+
+    <div class="grid">
+
+      <div class="card">
+
+        <div class="card-icon">⚖️</div>
+
+        <h3>التعريف</h3>
+
+        <p>
+          الوساطة هي وسيلة رضائية لتسوية النزاعات،
+          يتم من خلالها مساعدة الأطراف على الوصول إلى
+          حل مقبول بينهم بمساعدة وسيط محايد ومستقل.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">🤝</div>
+
+        <h3>الطابع الرضائي</h3>
+
+        <p>
+          تقوم الوساطة على رغبة الأطراف في محاولة حل
+          النزاع بطريقة توافقية بدلًا من الاستمرار في
+          الخصومة القضائية.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">🔒</div>
+
+        <h3>السرية</h3>
+
+        <p>
+          من أهم خصائص الوساطة المحافظة على سرية
+          المعلومات والمناقشات التي تتم أثناء إجراءات
+          الوساطة وفقًا للقواعد القانونية المطبقة.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">⚖️</div>
+
+        <h3>الحياد</h3>
+
+        <p>
+          يجب أن يتعامل الوسيط مع أطراف النزاع
+          بصورة محايدة دون الانحياز إلى طرف على حساب
+          الطرف الآخر.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">🎯</div>
+
+        <h3>الهدف</h3>
+
+        <p>
+          الهدف الأساسي هو مساعدة الأطراف على الوصول
+          إلى تسوية عملية ومرضية للنزاع دون فرض حل
+          عليهم.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">📚</div>
+
+        <h3>أهميتها لطالب الحقوق</h3>
+
+        <p>
+          تساعد دراسة الوساطة الطالب على فهم البدائل
+          الحديثة للتقاضي وتطوير مهارات التحليل
+          والتفاوض وإدارة النزاع.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PRINCIPLES ================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>مبادئ الوساطة</h2>
+
+      <p>أهم المبادئ التي ينبغي على طالب الحقوق معرفتها</p>
+
+    </div>
+
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>الحياد</h3>
+        <p>
+          عدم الانحياز لأي طرف من أطراف النزاع.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>الاستقلالية</h3>
+        <p>
+          ممارسة الوسيط لمهمته باستقلالية عن الأطراف.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>السرية</h3>
+        <p>
+          احترام سرية المعلومات والمناقشات المرتبطة بالوساطة.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>الرضائية</h3>
+        <p>
+          تقوم الوساطة على إرادة الأطراف في محاولة الوصول إلى تسوية.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>حسن النية</h3>
+        <p>
+          التعامل الجدي والبناء مع إجراءات الوساطة.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>احترام القانون</h3>
+        <p>
+          يجب أن تتم التسوية في إطار القواعد القانونية المعمول بها.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= STEPS ================= -->
+
+<section id="steps">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>مراحل الوساطة</h2>
+
+      <p>تصور تعليمي مبسط للمراحل الأساسية</p>
+
+    </div>
+
+
+    <div class="steps">
+
+      <div class="step">
+
+        <h3>بدء إجراءات الوساطة</h3>
+
+        <p>
+          التعرف على النزاع وتحديد الأطراف والموضوع محل الخلاف.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <h3>اختيار الوسيط</h3>
+
+        <p>
+          اختيار وسيط تتوفر فيه الشروط القانونية والمهنية المطلوبة.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <h3>الاجتماع بالأطراف</h3>
+
+        <p>
+          الاستماع إلى كل طرف وفهم مصالحه وموقفه من النزاع.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <h3>تحديد نقاط الخلاف</h3>
+
+        <p>
+          تحليل عناصر النزاع وتحديد المسائل التي يمكن التفاوض بشأنها.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <h3>التفاوض</h3>
+
+        <p>
+          مساعدة الأطراف على طرح الحلول والبدائل الممكنة.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <h3>التوصل إلى التسوية</h3>
+
+        <p>
+          إذا توصل الأطراف إلى اتفاق، يتم توثيق التسوية
+          وفق الإجراءات والقواعد القانونية المعمول بها.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= CASES ================= -->
+
+<section id="cases">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>نماذج تطبيقية للقضايا</h2>
+
+      <p>
+        حالات تعليمية افتراضية لفهم كيفية استخدام الوساطة
+      </p>
+
+    </div>
+
+
+    <div class="search-box">
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="ابحث عن قضية..."
+        oninput="searchCases()">
+
+      <button
+        class="btn btn-primary"
+        onclick="searchCases()">
+        بحث
+      </button>
+
+    </div>
+
+
+    <div class="grid" id="casesContainer">
+
+      <!-- CASE 1 -->
+
+      <article
+        class="card case-card"
+        data-search="نزاع تجاري شركة عقد">
+
+        <span class="tag">نزاع تجاري</span>
+
+        <h3>نزاع حول تنفيذ عقد تجاري</h3>
+
+        <p>
+          نشأ خلاف بين شركتين بسبب تأخر إحدى الشركتين
+          في تنفيذ جزء من الالتزامات التعاقدية.
+        </p>
+
+        <div class="actions">
+
+          <button
+            class="btn btn-primary"
+            onclick="openCase(1)">
+            دراسة القضية
+          </button>
+
+          <button
+            class="favorite"
+            onclick="toggleFavorite(1,this)">
+            ☆ مفضلة
+          </button>
+
+        </div>
+
+      </article>
+
+
+      <!-- CASE 2 -->
+
+      <article
+        class="card case-card"
+        data-search="إيجار عقار نزاع مؤجر مستأجر">
+
+        <span class="tag">نزاع إيجاري</span>
+
+        <h3>نزاع بين مؤجر ومستأجر</h3>
+
+        <p>
+          اختلف المؤجر والمستأجر حول إصلاحات العقار
+          وتوزيع تكاليف الصيانة.
+        </p>
+
+        <div class="actions">
+
+          <button
+            class="btn btn-primary"
+            onclick="openCase(2)">
+            دراسة القضية
+          </button>
+
+          <button
+            class="favorite"
+            onclick="toggleFavorite(2,this)">
+            ☆ مفضلة
+          </button>
+
+        </div>
+
+      </article>
+
+
+      <!-- CASE 3 -->
+
+      <article
+        class="card case-card"
+        data-search="عمل موظف مؤسسة نزاع عمالي">
+
+        <span class="tag">نزاع عمالي</span>
+
+        <h3>نزاع بين عامل ومؤسسة</h3>
+
+        <p>
+          نشأ نزاع حول مستحقات مالية وظروف تنفيذ علاقة العمل.
+        </p>
+
+        <div class="actions">
+
+          <button
+            class="btn btn-primary"
+            onclick="openCase(3)">
+            دراسة القضية
+          </button>
+
+          <button
+            class="favorite"
+            onclick="toggleFavorite(3,this)">
+            ☆ مفضلة
+          </button>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= DICTIONARY ================= -->
+
+<section id="dictionary">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>قاموس المصطلحات</h2>
+
+      <p>مصطلحات مهمة لطالب الحقوق</p>
+
+    </div>
+
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>الوسيط</h3>
+        <p>
+          شخص محايد يساعد الأطراف على التواصل والتفاوض
+          للوصول إلى تسوية.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>النزاع</h3>
+        <p>
+          خلاف بين طرفين أو أكثر حول حق أو مصلحة أو التزام.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>التسوية</h3>
+        <p>
+          اتفاق يهدف إلى إنهاء النزاع أو الحد منه.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>التفاوض</h3>
+        <p>
+          عملية تبادل المقترحات للوصول إلى اتفاق.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>السرية</h3>
+        <p>
+          حماية المعلومات التي يتم تداولها أثناء إجراءات الوساطة.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>الحياد</h3>
+        <p>
+          عدم تفضيل أحد أطراف النزاع على الآخر.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= QUIZ ================= -->
+
+<section id="quiz">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>اختبر معلوماتك</h2>
+
+      <p>
+        اختبار قصير مخصص لطلبة الحقوق
+      </p>
+
+    </div>
+
+
+    <div class="quiz-container">
+
+      <div class="question">
+
+        <h3>1. ما الهدف الأساسي من الوساطة؟</h3>
+
+        <div class="answers">
+
+          <label>
+            <input type="radio" name="q1" value="a">
+            فرض حل على الأطراف
+          </label>
+
+          <label>
+            <input type="radio" name="q1" value="b">
+            مساعدة الأطراف على الوصول إلى تسوية
+          </label>
+
+          <label>
+            <input type="radio" name="q1" value="c">
+            إصدار حكم قضائي
+          </label>
+
+        </div>
+
+      </div>
+
+
+      <div class="question">
+
+        <h3>2. من أهم مبادئ الوساطة:</h3>
+
+        <div class="answers">
+
+          <label>
+            <input type="radio" name="q2" value="a">
+            الانحياز
+          </label>
+
+          <label>
+            <input type="radio" name="q2" value="b">
+            السرية
+          </label>
+
+          <label>
+            <input type="radio" name="q2" value="c">
+            الإكراه
+          </label>
+
+        </div>
+
+      </div>
+
+
+      <div class="question">
+
+        <h3>3. هل يستطيع الوسيط فرض حل على الأطراف؟</h3>
+
+        <div class="answers">
+
+          <label>
+            <input type="radio" name="q3" value="a">
+            نعم
+          </label>
+
+          <label>
+            <input type="radio" name="q3" value="b">
+            لا
+          </label>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="btn btn-primary"
+        onclick="calculateQuiz()">
+        تصحيح الاختبار
+      </button>
+
+
+      <div id="quizResult" class="result"></div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  <h2>منصة حمداد هشام التعليمية للوساطة القضائية</h2>
+
+  <p>
+    منصة تعليمية موجهة لطلبة الحقوق والباحثين في مجال الوساطة وتسوية النزاعات.
+  </p>
+
+  <p>
+    © 2026 جميع الحقوق محفوظة
+  </p>
+
+</footer>
+
+
+<!-- ================= TOP BUTTON ================= -->
+
+<button id="topBtn" onclick="scrollToTop()">↑</button>
+
+
+<!-- ================= MODAL ================= -->
+
+<div class="modal" id="caseModal">
+
+  <div class="modal-content">
+
+    <button class="close" onclick="closeModal()">×</button>
+
+    <div id="modalContent"></div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+function goTo(sectionId) {
+
+  const element = document.getElementById(sectionId);
+
+  if (element) {
+
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+  }
+
+}
+
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+function toggleDarkMode() {
+
+  document.body.classList.toggle("dark");
+
+  const enabled =
+    document.body.classList.contains("dark");
+
+  localStorage.setItem(
+    "darkMode",
+    enabled ? "on" : "off"
+  );
+
+}
+
+
+/* استرجاع الوضع عند فتح التطبيق */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  const darkMode =
+    localStorage.getItem("darkMode");
+
+  if (darkMode === "on") {
+    document.body.classList.add("dark");
+  }
+
+  loadFavorites();
+
+});
+
+
+/* =========================================
+   CASE DATABASE
+========================================= */
+
+const cases = {
+
+  1: {
+
+    title: "نزاع حول تنفيذ عقد تجاري",
+
+    type: "نزاع تجاري",
+
+    facts: `
+      أبرمت شركة "أ" عقدًا مع شركة "ب" لتوريد مجموعة
+      من المعدات. تأخرت شركة "ب" في التسليم، مما أدى
+      إلى خسائر تجارية للشركة الأولى.
+    `,
+
+    mediation: `
+      خلال جلسات الوساطة تم الاستماع إلى موقف كل طرف،
+      ثم تم تحديد النقاط التي يمكن التفاوض بشأنها.
+      اقترح الوسيط جدولًا جديدًا للتسليم مع معالجة
+      جزء من الخسائر بصورة توافقية.
+    `,
+
+    result: `
+      توصل الطرفان إلى اتفاق ودي يتضمن جدولًا جديدًا
+      للتنفيذ والتزامات متبادلة.
+    `
+
+  },
+
+
+  2: {
+
+    title: "نزاع بين مؤجر ومستأجر",
+
+    type: "نزاع إيجاري",
+
+    facts: `
+      نشأ خلاف بين مؤجر ومستأجر بسبب أعمال صيانة
+      وإصلاحات داخل العقار، حيث رأى كل طرف أن الطرف
+      الآخر مسؤول عن تحمل التكاليف.
+    `,
+
+    mediation: `
+      ناقش الطرفان طبيعة الإصلاحات والعقد المبرم بينهما.
+      تم تقسيم المسؤوليات والتكاليف بطريقة تحقق
+      مصلحة مشتركة للطرفين.
+    `,
+
+    result: `
+      تم الاتفاق على تنفيذ الإصلاحات وتقسيم التكاليف
+      وفق تسوية رضائية.
+    `
+
+  },
+
+
+  3: {
+
+    title: "نزاع بين عامل ومؤسسة",
+
+    type: "نزاع عمالي",
+
+    facts: `
+      طالب عامل بمستحقات مالية رأى أنها لم تدفع له
+      بشكل كامل، بينما قدمت المؤسسة تفسيرًا مختلفًا
+      لطريقة احتساب تلك المستحقات.
+    `,
+
+    mediation: `
+      قام الوسيط بتسهيل الحوار بين الطرفين ومراجعة
+      عناصر النزاع والمستندات المتوفرة.
+    `,
+
+    result: `
+      توصل الطرفان إلى اتفاق بشأن المبلغ وطريقة الدفع
+      واستمرار العلاقة المهنية وفق شروط واضحة.
+    `
+
+  }
+
+};
+
+
+/* =========================================
+   OPEN CASE
+========================================= */
+
+function openCase(id) {
+
+  const item = cases[id];
+
+  if (!item) return;
+
+  const content = `
+
+    <span class="tag">${item.type}</span>
+
+    <h2>${item.title}</h2>
+
+    <br>
+
+    <h3>وقائع القضية</h3>
+
+    <p>${item.facts}</p>
+
+    <br>
+
+    <h3>كيف تمت الوساطة؟</h3>
+
+    <p>${item.mediation}</p>
+
+    <br>
+
+    <h3>نتيجة التسوية</h3>
+
+    <p>${item.result}</p>
+
+    <br>
+
+    <p>
+      <strong>ملاحظة تعليمية:</strong>
+      هذه الحالة افتراضية لأغراض التدريب والتعليم،
+      ولا تمثل استشارة قانونية أو حكمًا قضائيًا.
+    </p>
+
+  `;
+
+  document.getElementById("modalContent").innerHTML = content;
+
+  document.getElementById("caseModal")
+    .classList.add("show");
+
+}
+
+
+/* =========================================
+   CLOSE MODAL
+========================================= */
+
+function closeModal() {
+
+  document.getElementById("caseModal")
+    .classList.remove("show");
+
+}
+
+
+document.getElementById("caseModal")
+  .addEventListener("click", function(e) {
+
+    if (e.target === this) {
+      closeModal();
+    }
+
+  });
+
+
+/* =========================================
+   SEARCH CASES
+========================================= */
+
+function searchCases() {
+
+  const query =
+    document.getElementById("searchInput")
+      .value
+      .toLowerCase()
+      .trim();
+
+  const cards =
+    document.querySelectorAll(".case-card");
+
+  cards.forEach(card => {
+
+    const text =
+      card.dataset.search.toLowerCase();
+
+    if (text.includes(query)) {
+
+      card.style.display = "";
+
+    } else {
+
+      card.style.display = "none";
+
+    }
+
+  });
+
+}
+
+
+/* =========================================
+   FAVORITES
+========================================= */
+
+function getFavorites() {
+
+  return JSON.parse(
+    localStorage.getItem("favorites") || "[]"
+  );
+
+}
+
+
+function toggleFavorite(id, button) {
+
+  let favorites = getFavorites();
+
+  if (favorites.includes(id)) {
+
+    favorites =
+      favorites.filter(item => item !== id);
+
+    button.classList.remove("active");
+
+    button.innerHTML = "☆ مفضلة";
+
+  } else {
+
+    favorites.push(id);
+
+    button.classList.add("active");
+
+    button.innerHTML = "★ محفوظة";
+
+  }
+
+  localStorage.setItem(
+    "favorites",
+    JSON.stringify(favorites)
+  );
+
+}
+
+
+function loadFavorites() {
+
+  const favorites = getFavorites();
+
+  document
+    .querySelectorAll(".favorite")
+    .forEach((button, index) => {
+
+      const id = index + 1;
+
+      if (favorites.includes(id)) {
+
+        button.classList.add("active");
+
+        button.innerHTML = "★ محفوظة";
+
+      }
+
+    });
+
+}
+
+
+/* =========================================
+   QUIZ
+========================================= */
+
+function calculateQuiz() {
+
+  let score = 0;
+
+  const q1 =
+    document.querySelector(
+      'input[name="q1"]:checked'
+    );
+
+  const q2 =
+    document.querySelector(
+      'input[name="q2"]:checked'
+    );
+
+  const q3 =
+    document.querySelector(
+      'input[name="q3"]:checked'
+    );
+
+
+  if (q1 && q1.value === "b") {
+    score++;
+  }
+
+  if (q2 && q2.value === "b") {
+    score++;
+  }
+
+  if (q3 && q3.value === "b") {
+    score++;
+  }
+
+
+  const result =
+    document.getElementById("quizResult");
+
+  result.style.display = "block";
+
+
+  if (score === 3) {
+
+    result.style.background = "#d1e7dd";
+    result.style.color = "#0f5132";
+
+    result.innerHTML =
+      "🎉 ممتاز! حصلت على 3/3. لديك فهم جيد لأساسيات الوساطة القضائية.";
+
+  }
+
+  else if (score === 2) {
+
+    result.style.background = "#fff3cd";
+    result.style.color = "#664d03";
+
+    result.innerHTML =
+      "👍 جيد جدًا! حصلت على " +
+      score +
+      "/3. راجع بعض المفاهيم الأساسية.";
+
+  }
+
+  else {
+
+    result.style.background = "#f8d7da";
+    result.style.color = "#842029";
+
+    result.innerHTML =
+      "📚 حصلت على " +
+      score +
+      "/3. ننصحك بمراجعة أقسام المنصة ثم إعادة الاختبار.";
+
+  }
+
+}
+
+
+/* =========================================
+   SCROLL TO TOP
+========================================= */
+
+window.addEventListener("scroll", function() {
+
+  const button =
+    document.getElementById("topBtn");
+
+  if (window.scrollY > 500) {
+
+    button.style.display = "block";
+
+  } else {
+
+    button.style.display = "none";
+
+  }
+
+});
+
+
+function scrollToTop() {
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+/* =========================================
+   ESCAPE KEY FOR MODAL
+========================================= */
+
+document.addEventListener("keydown", function(e) {
+
+  if (e.key === "Escape") {
+
+    closeModal();
+
+  }
+
+});
+
+</script>
+
+</body>
+</html>
